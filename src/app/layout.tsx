@@ -18,6 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <SessionProvider>
+      {/* Protected Route Wrapper */}
       <Protected>
         <html lang="en">
           <body className={inter.className}>{children}</body>

@@ -2,7 +2,7 @@ import { CountryProps } from "@/types";
 
 export async function getCountryList() {
   const response = await fetch(
-    "/apis",
+    "/apis", // using proxy to bypass CORS error
     {
       headers: {
         Accept: "*/*",

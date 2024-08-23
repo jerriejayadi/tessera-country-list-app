@@ -1,5 +1,7 @@
 import NextAuth from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
+
+// basic options for Next Auth
 export const {
   handlers: { GET, POST },
   auth,

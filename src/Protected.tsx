@@ -2,6 +2,8 @@
 import { useSession } from "next-auth/react";
 import { redirect, useRouter } from "next/navigation";
 
+
+// Protected Route, to protect when user try to access country page but not logged in yet
 export default function Protected({
   children,
 }: Readonly<{
@@ -9,9 +11,10 @@ export default function Protected({
 }>) {
   const router = useRouter();
   const session = useSession();
-  console.log(session);
+
+  // if session returns unauthenticated A.K.A not logged in, immediately push to login page
   if (session.status === "unauthenticated") {
-    router.push(`/`);
+    router.push(`/`); 
   }
   return children;
 }

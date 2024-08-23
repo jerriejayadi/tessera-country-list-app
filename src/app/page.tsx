@@ -9,12 +9,11 @@ export default function Home() {
   const { data: session, status } = useSession();
   const [error, setError] = useState<string | "">("");
   const router = useRouter();
+
+  // Onmount Check
   useEffect(() => {
     if (session) {
-      router.push(`/country`);
-    }
-    if (status !== "authenticated") {
-      setError("Failed");
+      router.push(`/country`); // if user is already logged in, immediately push to the Country List page
     }
   }, [session]);
   return (
@@ -28,15 +27,7 @@ export default function Home() {
           be able to see the country list in our database!
         </p>
         <button
-          onClick={() =>
-            signIn("google")
-              .then((res) => {
-                console.log("hey1");
-              })
-              .catch((err) => {
-                console.log("hey2");
-              })
-          }
+          onClick={() => signIn("google")}
           className={`px-5 py-3  flex items-center gap-2 bg-primary rounded-lg mt-6 w-full active:brightness-75 md:hover:brightness-75 transition-all duration-200`}
         >
           <FaGoogle /> Sign in with google

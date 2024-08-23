@@ -18,7 +18,10 @@ export default function Country() {
       className={`flex min-h-screen flex-col items-start md:items-center justify-center gap-6 p-6`}
     >
       <h1 className={`text-2xl leading-9 font-bold`}>Country List</h1>
+
+      {/* Country List Table Component */}
       <CountryListTable />
+      
       <button
         onClick={() => {
           handleLogout();

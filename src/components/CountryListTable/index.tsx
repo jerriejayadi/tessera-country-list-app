@@ -6,8 +6,10 @@ import { useState, useMemo, useEffect } from "react";
 
 export default function CountryListTable() {
   const [data, setData] = useState<CountryProps[]>(),
-    [loading, setLoading] = useState<boolean>(true),
+    [loading, setLoading] = useState<boolean>(true), // set Loading state
     [error, setError] = useState<string | null>(null);
+
+    // memoize data
   const memoizedData = useMemo(() => {
     return data;
   }, [data]);
@@ -16,15 +18,16 @@ export default function CountryListTable() {
     getCountryList()
       .then((res) => {
         setData(res);
-        setLoading(false);
+        setLoading(false); // remove loading state when fetching is done
       })
       .catch((error) => {
         setError(error);
-        console.log();
-        setLoading(false);
+        setLoading(false);  // remove loading state when fetching is done
       });
   }, []);
 
+
+  // loading state
   if (loading) {
     return (
       <div className={`grid grid-cols-1 md:grid-cols-3 shrink-0 gap-4 md:gap-8`}>
@@ -49,6 +52,8 @@ export default function CountryListTable() {
     );
   }
 
+
+  // error state
   if (error) {
     return (
       <div
@@ -63,6 +68,8 @@ export default function CountryListTable() {
     );
   }
 
+
+  // table
   return (
     <div className={`grid grid-cols-1 md:grid-cols-3 shrink-0 gap-4 md:gap-8`}>
       {memoizedData?.map((rows, index) => (
