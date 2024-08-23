@@ -2,7 +2,17 @@ import { CountryProps } from "@/types";
 
 export async function getCountryList() {
   const response = await fetch(
-    "https://yourtessera-backend-api-staging.up.railway.app/locations/countries"
+    "https://yourtessera-backend-api-staging.up.railway.app/locations/countries",
+    {
+      headers: {
+        Accept: "*/*",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE",
+        "Access-Control-Allow-Headers": "Content-Type",
+        "Access-Control-Allow-Credentials": "true",
+        "Upgrade-Insecure-Requests": "1",
+      },
+    }
   );
 
   // Ensure the response is okay
